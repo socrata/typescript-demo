@@ -16,17 +16,15 @@ module.exports = {
           template: './template.html',
           filename: './index.html'
         })],
-
+  resolve: { extensions: ['.js', '.jsx', '.ts', '.tsx'] },
   module: {
     rules: [
       {
         test: /\.(js|jsx)$/,
         include: [path.resolve(__dirname, '.')],
         loader: 'babel-loader',
-
         options: {
           plugins: ['syntax-dynamic-import'],
-
           presets: [
             [
               '@babel/preset-env',
@@ -37,6 +35,15 @@ module.exports = {
             '@babel/preset-react'
           ]
         }
+      },
+      {
+        test: /\.tsx?$/,
+        use: ['babel-loader', {
+          loader: 'ts-loader',
+          options: {
+            experimentalFileCaching: true
+          }
+        }]
       }
     ]
   },

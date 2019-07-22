@@ -1,9 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import * as helpers from './lib/helpers';
 
 function App() {
+  
   return (
-    <div>hello world</div>
+    <div>{ `${helpers.titleCase('hello')} world` }</div>
   );
 }
 

@@ -28,6 +28,11 @@
     "style-loader": "0.23.1",
     "webpack": "4.36.1",
     "webpack-cli": "3.3.6",
-    "webpack-dev-server": "3.7.2"
+    "webpack-dev-server": "3.7.2",
+    "@types/react": "15.6.26",
+    "@types/react-dom": "15.5.10",
+    "@types/react-redux": "5.0.21",
+    "ts-loader": "5.4.3",
+    "typescript": "3.4.5"
   }
 }
