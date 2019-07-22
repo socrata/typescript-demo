@@ -4,7 +4,7 @@
     { "id": 2, "title": "another post", "author": "Jack Aubrey", "likes":  20 }
   ],
   "comments": [
-    { "id": 1, "body": "some comment", "postId": 1 },
+    { "id": 1, "body": "some comment", "postId": 1, "tags": ["good", "cool"] },
     { "id": 2, "body": "another comment", "postId": 1}
   ],
   "profiles": [

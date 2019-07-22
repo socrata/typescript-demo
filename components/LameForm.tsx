@@ -76,7 +76,13 @@ class LameForm extends React.Component<{}, { greeting: string, comments: Comment
           <Dropdown />
           <button>submit</button>
         </form>
-        <ol>{ this.state.comments.map(c => <li key={c.id}>{c.body}</li>) }</ol>
+        <ol>
+          { this.state.comments.map(c =>
+          <li key={c.id}>
+            {c.body}
+            <ul>{c.tags && c.tags.map(t => <li>{t}</li>)}</ul>
+          </li>) }
+        </ol>
       </div>
     );
   }

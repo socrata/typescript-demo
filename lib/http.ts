@@ -9,6 +9,7 @@ export interface Comment {
   id: number;
   body: string;
   postId: number;
+  tags?: string[];
 }
 
 export function getComments(postId: number): Promise<Comment[]> {
