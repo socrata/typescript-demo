@@ -1,5 +1,6 @@
 import React, { FormEvent } from 'react';
 import * as helpers from '../lib/helpers';
+import { getComments, Comment } from '../lib/http';
 
 class Dropdown extends React.Component<{}, { msg: string }> {
   constructor() {
@@ -30,13 +31,22 @@ class Dropdown extends React.Component<{}, { msg: string }> {
   }
 }
 
-class LameForm extends React.Component<{}, { greeting: string }> {
+class LameForm extends React.Component<{}, { greeting: string, comments: Comment[] }> {
   constructor() {
     super();
     this.state = {
-      greeting: ''
+      greeting: '',
+      comments: []
     };
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
+  }
+
+  componentDidMount() {
+    getComments(1).then((cs: Comment[]) => {
+      this.setState({
+        comments: cs
+      });
+    });
   }
 
   handleFormSubmit(e: FormEvent<HTMLFormElement>) {
@@ -66,6 +76,7 @@ class LameForm extends React.Component<{}, { greeting: string }> {
           <Dropdown />
           <button>submit</button>
         </form>
+        <ol>{ this.state.comments.map(c => <li key={c.id}>{c.body}</li>) }</ol>
       </div>
     );
   }
