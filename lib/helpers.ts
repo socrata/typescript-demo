@@ -102,3 +102,25 @@ function makeName(first: string, last: string): DisplayName {
 
 export const greetUser =
   (first: string, last: string): string => makeGreeting(makeName(first, last));
+
+const ACTIONS = {
+  ADD: 'add',
+  DELETE: 'delete',
+  EDIT: 'edit'
+};
+
+function doAction(action) {
+  if (action === ACTIONS.ADD) {
+    console.log('add things');
+  } else if (action === ACTIONS.DELETE) {
+    console.log('delete things');
+  } else {
+    console.log('edit things');
+  }
+}
+
+// TODO: identify the bug here, the reafactor doAction using types
+// to ensure the compiler catches the bug
+function actionProgram() {
+  doAction('deleet');
+}

@@ -9,7 +9,7 @@
   ],
   "profiles": [
     { "name": "typicode" },
-    { "name": "Jack Aubrey", "displayName": "sUrPriZ3Cpt" }
+    { "name": "Jack Aubrey", "options": { "displayName": "sUrPriZ3Cpt" } }
   ]
 }
 
