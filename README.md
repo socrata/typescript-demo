@@ -34,6 +34,129 @@ Things to note:
 - Notice how the two projects are extremely similar with minimal changes; for example, check out `util.js` and `util.ts`; the TS version is 99% the same, just with some added types. This adds nice documentation when using these functions elsewhere.
 - Notice how in TypeScript, the props coming from `mapDispatchToProps` and `mapStateToProps` are defined in separate spots; this makes it much easier to figure out what is coming from where. On top of that, it will catch errors when you change the shape of what you expect to get back from redux.
 
+## Exercises
+
+### Medium Difficulty: "Folding" a hand
+
+Implement a button next to the `Hand` component that will "fold" a hand. This will put all of the cards in the hand into the discard pile and remove the hand from play.
+
+### Hints
+
+<details>
+<summary>Click for a hint!</summary>
+
+- This requires adding a new action to `actions.ts`
+
+<details>
+<summary>Click for another hint!</summary>
+
+Add the following to `actions.ts`:
+
+```ts
+/** Fold a given hand */
+export const FOLD_HAND = "FOLD_HAND";
+export const foldHand = (index: number) => action(FOLD_HAND, { index });
+export type FoldHandAction = ReturnType<typeof foldHand>;
+
+// on `ActionTypes` add `| FoldHandAction`
+```
+
+This will now need to be added to `reducer.ts`.
+
+<details>
+<summary>Click for another hint!</summary>
+
+Add the following to `reducer.ts`:
+
+```ts
+import { FOLD_HAND, FoldHandAction } from './actions';
+
+/** Fold a hand */
+const foldHand = (state: State, { payload: { index }}: FoldHandAction): State => {
+  const deletedHand = [...state.hands[index]];
+  const hands = [ ...state.hands];
+  hands.splice(index, 1);
+
+  return {
+    ...state,
+    hands,
+    discardPile: [
+        ...state.discardPile,
+        ...deletedHand
+    ]
+  }
+}
+
+// ...in base reducer function ...
+
+case FOLD_HAND:
+    return foldHand(state, action as FoldHandAction)
+
+```
+
+Now, this action needs to be dispatched from the `Hand` component.
+
+<details>
+<summary>Click for another hint!</summary>
+
+Add the following to `Hand.tsx`:
+
+```tsx
+import { FoldHandAction } from '../actions';
+
+// ...
+
+interface DispatchProps {
+    // ...
+    onFoldHand: (index: number) => FoldHandAction;
+}
+
+render() {
+    // ...
+    <div>
+        {/* ... */}
+        <button onClick={() => onFoldHand(index)}>Fold</button>
+    </div>
+}
+
+const mapDispatchToProps = (
+  dispatch: Dispatch<ActionTypes>
+): DispatchProps => ({
+  // ...
+  onFoldHand: (index: number) => dispatch(foldHand(index))
+});
+```
+
+That's it!!!
+
+</details>
+
+</details>
+
+</details>
+  </details>
+
+## Hard Difficulty: Refactor: Players instead of Hands
+
+In `types.ts` there is a `Player` interface defined:
+
+```ts
+/** A player in the game */
+export interface Player {
+  /** The player's name */
+  name: string;
+
+  /** The player's hand */
+  hand: Card[];
+}
+```
+
+**Refactor the `State` interface to have a `players: Player[]` instead of `hands: Card[][]`.**
+
+When the `DEAL_HAND` action is dispatched, add a new `Player` who has a name (**HINT:** There is a `getRandomName` function in `utils.js` that will get you a fun name!)
+
+This will involve changing much of the project, including the reducer and some components.
+
 ## Resources
 
 ---
