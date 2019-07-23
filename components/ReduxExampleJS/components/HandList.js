@@ -6,13 +6,16 @@ import { getHands } from "../selectors";
 import { dealHand } from "../actions";
 import Hand from "./Hand";
 
+/** Renders a list of all the hands */
 class HandList extends Component {
   static propTypes = {
-    // we can use "arrayOf" here but that doesn't offer us much
-    hands: PropTypes.array.isRequired,
+    // mapStateToProps props //
+    /** List of every hand */
+    hands: PropTypes.array.isRequired, // we can use "arrayOf" here but that doesn't offer us much
 
-    // what kind of func? what are its parameters? what does it return?
-    onDealHand: PropTypes.func.isRequired
+    // mapDispatchToProps props //
+    /** Function to call to deal a new hand */
+    onDealHand: PropTypes.func.isRequired // what kind of func? what are its parameters? what does it return?
   };
 
   render() {

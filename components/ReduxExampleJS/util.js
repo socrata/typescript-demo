@@ -1,21 +1,6 @@
-export const Suits = ["diamonds", "spades", "hearts", "clovers"];
+import { Suits, Ranks } from "./constants";
 
-export const Ranks = [
-  "2",
-  "3",
-  "4",
-  "5",
-  "6",
-  "7",
-  "8",
-  "9",
-  "10",
-  "J",
-  "Q",
-  "K",
-  "A"
-];
-
+/** Geneate a standard 52-card deck */
 export const generateDeck = () => {
   const deck = [];
 
@@ -26,11 +11,29 @@ export const generateDeck = () => {
     });
   });
 
+  return shuffleDeck(deck);
+};
+
+/** Shuffle a deck. Returns a deck. */
+export const shuffleDeck = deck => {
+  const shuffled = [...deck];
+
   // shuffle the deck
-  for (let i = deck.length - 1; i > 0; i--) {
+  for (let i = shuffled.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
-    [deck[i], deck[j]] = [deck[j], deck[i]];
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
   }
 
-  return deck;
+  return shuffled;
+};
+
+/** Hit an API to get a randomly-generated name */
+export const getRandomName = async () => {
+  try {
+    const result = await fetch("/name");
+    const json = await result.json();
+    return json[0];
+  } catch (e) {
+    console.error("Error getting a random name", e);
+  }
 };

@@ -87,6 +87,13 @@ module.exports = {
       "/api": {
         target: "http://localhost:3000",
         pathRewrite: { "^/api": "" }
+      },
+
+      // because CORS this has to look like it's coming from the domain we're on
+      "/name": {
+        target:
+          "https://namey.muffinlabs.com/name.json?count=1&with_surname=true&frequency=rare",
+        changeOrigin: true
       }
     }
   }

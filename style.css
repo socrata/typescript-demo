@@ -13,10 +13,38 @@ form label {
   display: block;
 }
 
-input, select {
+input,
+select {
   margin-left: 10px;
 }
 
 form > * {
   margin-bottom: 1em;
+}
+
+.card {
+  height: 100px;
+  width: 70px;
+  margin: 5px;
+  background: white;
+  border: 1px solid black;
+  border-radius: 5px;
+  transform: translateY(0);
+  transition: transform 0.5s, box-shadow 0.5s;
+  box-shadow: none;
+}
+
+.card:hover {
+  cursor: pointer;
+  transform: translateY(-1px);
+  transition: transform 0.5s, box-shadow 0.5s;
+  box-shadow: 0px 2px 10px #545454;
+}
+
+.suit.red {
+  color: red;
+}
+
+.suit.black {
+  color: black;
 }

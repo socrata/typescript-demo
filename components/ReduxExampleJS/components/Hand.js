@@ -8,23 +8,32 @@ import { getHand } from "../selectors";
 
 class Hand extends Component {
   static propTypes = {
-    hand: HandPropType,
+    // passed-in props //
+    /** Index of this hand in the list of hands */
     index: PropTypes.number.isRequired,
+
+    // mapStateToProps props //
+    /** The actual hand */
+    hand: HandPropType,
+
+    // mapDispatchToProps props //
+    /** Function to call to play a specific card */
     onPlayCard: PropTypes.func.isRequired
   };
 
+  /** Render a span for the given suit */
   renderSuit = suit => {
     switch (suit) {
       case "diamonds":
-        return "♦";
+        return <span className="suit red">♦</span>;
       case "spades":
-        return "♠";
+        return <span className="suit black">♠</span>;
       case "hearts":
-        return "♥";
+        return <span className="suit red">♥</span>;
       case "clovers":
-        return "♣";
+        return <span className="suit black">♣</span>;
       default:
-        return "?";
+        return <span className="suit">?</span>;
     }
   };
 
@@ -35,6 +44,7 @@ class Hand extends Component {
       <div>
         {hand.map((card, cardIndex) => (
           <button
+            className="card"
             key={`${card.suit}-${card.rank}`}
             onClick={() => onPlayCard(index, cardIndex)}
           >
