@@ -12,11 +12,21 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@babel/preset-react": "7.0.0",
+    "@babel/plugin-proposal-class-properties": "^7.5.5",
+    "@babel/plugin-transform-regenerator": "^7.4.5",
+    "@babel/plugin-transform-runtime": "^7.5.5",
+    "@babel/preset-react": "^7.0.0",
+    "@babel/runtime": "^7.5.5",
+    "@reach/router": "^1.2.1",
+    "@types/reach__router": "^1.2.4",
+    "core-js": "^3.1.4",
     "json-server": "^0.15.0",
     "react": "15.6.1",
     "react-dom": "15.6.1",
-    "redux": "3.7.2"
+    "react-redux": "5.0.6",
+    "redux": "3.7.2",
+    "regenerator-runtime": "^0.13.3",
+    "typesafe-actions": "^4.4.2"
   },
   "devDependencies": {
     "@babel/core": "7.5.5",

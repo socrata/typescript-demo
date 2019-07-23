@@ -1,11 +1,13 @@
-import React, { FormEvent } from 'react';
-import * as helpers from '../lib/helpers';
-import { getComments, Comment } from '../lib/http';
+import React, { FormEvent } from "react";
+import { RouteComponentProps } from "@reach/router";
+
+import * as helpers from "../lib/helpers";
+import { getComments, Comment } from "../lib/http";
 
 class Dropdown extends React.Component<{}, { msg: string }> {
   constructor() {
     super();
-    this.state = { msg: '' };
+    this.state = { msg: "" };
     this.handleStatusUpdate = this.handleStatusUpdate.bind(this);
   }
 
@@ -20,8 +22,10 @@ class Dropdown extends React.Component<{}, { msg: string }> {
     return (
       <label>
         Status
-        <select defaultValue={helpers.Status.Good}
-                onChange={this.handleStatusUpdate}>
+        <select
+          defaultValue={helpers.Status.Good}
+          onChange={this.handleStatusUpdate}
+        >
           <option value={helpers.Status.Good}>good</option>
           <option value={helpers.Status.Bad}>bad</option>
         </select>
@@ -31,11 +35,14 @@ class Dropdown extends React.Component<{}, { msg: string }> {
   }
 }
 
-class LameForm extends React.Component<{}, { greeting: string, comments: Comment[] }> {
+class LameForm extends React.Component<
+  RouteComponentProps,
+  { greeting: string; comments: Comment[] }
+> {
   constructor() {
     super();
     this.state = {
-      greeting: '',
+      greeting: "",
       comments: []
     };
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
@@ -51,10 +58,12 @@ class LameForm extends React.Component<{}, { greeting: string, comments: Comment
 
   handleFormSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    const firstField: HTMLInputElement | null = document.querySelector('#first');
-    const lastField: HTMLInputElement | null = document.querySelector('#last');
-    const first = firstField ? firstField.value: '';
-    const last = lastField ? lastField.value : '';
+    const firstField: HTMLInputElement | null = document.querySelector(
+      "#first"
+    );
+    const lastField: HTMLInputElement | null = document.querySelector("#last");
+    const first = firstField ? firstField.value : "";
+    const last = lastField ? lastField.value : "";
     this.setState({
       greeting: helpers.greetUser(first, last)
     });
@@ -63,6 +72,7 @@ class LameForm extends React.Component<{}, { greeting: string, comments: Comment
   render() {
     return (
       <div>
+        <h2>Lame Form</h2>
         <section>{this.state.greeting}</section>
         <form onSubmit={this.handleFormSubmit}>
           <label>
@@ -77,12 +87,15 @@ class LameForm extends React.Component<{}, { greeting: string, comments: Comment
           <button>submit</button>
         </form>
         <ol>
-          { this.state.comments.map(c =>
-          <li key={c.id}>
-            {c.body}
-            <ul>{c.tags && c.tags.map(t => <li>{t}</li>)}</ul>
-          </li>) }
+          {this.state.comments.map(c => (
+            <li key={c.id}>
+              {c.body}
+              <ul>{c.tags && c.tags.map(t => <li>{t}</li>)}</ul>
+            </li>
+          ))}
         </ol>
+
+        {`${helpers.titleCase("hello")} world`}
       </div>
     );
   }
