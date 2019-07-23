@@ -1,5 +1,5 @@
 import { DEAL_HAND, PLAY_CARD, RESHUFFLE_DISCARD } from "./actions";
-import { generateDeck, shuffleDeck, getRandomName } from "./util";
+import { generateDeck, shuffleDeck } from "./util";
 
 const defaultState = {
   deck: generateDeck(),
@@ -16,9 +16,6 @@ const dealHand = state => {
 
   // and remove them
   const restOfDeck = deck.slice(5);
-
-  // TODO add metadata around players
-  const playerName = getRandomName();
 
   return {
     ...state,

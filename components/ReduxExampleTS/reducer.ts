@@ -5,7 +5,7 @@ import {
   ActionTypes,
   PlayCardAction
 } from "./actions";
-import { generateDeck, shuffleDeck, getRandomName } from "./util";
+import { generateDeck, shuffleDeck } from "./util";
 
 import { State } from "./types";
 
@@ -25,9 +25,6 @@ const dealHand = (state: State): State => {
 
   // and remove them
   const restOfDeck = deck.slice(5);
-
-  // TODO add metadata around players
-  const playerName = getRandomName();
 
   return {
     ...state,
