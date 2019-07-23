@@ -109,7 +109,7 @@ const ACTIONS = {
   EDIT: 'edit'
 };
 
-function doAction(action) {
+function doAction(action: any) {
   if (action === ACTIONS.ADD) {
     console.log('add things');
   } else if (action === ACTIONS.DELETE) {
