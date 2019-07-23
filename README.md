@@ -20,6 +20,12 @@ To compile everything:
 npm run build
 ```
 
+To run the mock api (only needed for the hands-on exercise):
+
+```sh
+npm run start-mock-server
+```
+
 ## Project Layout
 
 `components/ReduxExampleJS` and `components/ReduxExampleTS` both contain the same toy app, implemented in JavaScript and TypeScript respectively.
@@ -35,6 +41,12 @@ Things to note:
 - Notice how in TypeScript, the props coming from `mapDispatchToProps` and `mapStateToProps` are defined in separate spots; this makes it much easier to figure out what is coming from where. On top of that, it will catch errors when you change the shape of what you expect to get back from redux.
 
 ## Exercises
+
+### Easy Difficulty: The Bug and the Compiler
+In `lib/helpers.ts`, identify the bug in the `actionProgram` function, then reafactor `doAction` using types to ensure the compiler catches the bug.
+
+### Medium Difficulty: Typing API Responses
+In `lib/http.ts`, create a Profile type and an async function that calls the profiles index route (/api/profiles). Add the function to the componentDidMount method of the ProfileTable component (use LameForm component as a model if you need some help).
 
 ### Medium Difficulty: "Folding" a hand
 
@@ -136,7 +148,7 @@ That's it!!!
 </details>
   </details>
 
-## Hard Difficulty: Refactor: Players instead of Hands
+### Hard Difficulty: Refactor: Players instead of Hands
 
 In `types.ts` there is a `Player` interface defined:
 
