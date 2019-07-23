@@ -4,6 +4,7 @@ import { Router, Link } from "@reach/router";
 
 import LameForm from "./components/LameForm";
 import ReduxExampleJS from "./components/ReduxExampleJS";
+import ReduxExampleTS from "./components/ReduxExampleTS";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
       <Router>
         <LameForm path="/" />
         <ReduxExampleJS path="/redux_js" />
+        <ReduxExampleTS path="/redux_ts" />
       </Router>
     </main>
   );

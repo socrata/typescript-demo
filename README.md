@@ -29,3 +29,7 @@ npm run build
 [Typescript Playground](http://www.typescriptlang.org/play/): Type TS and see the compiled JS
 
 [DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped): Repo containing types for thousands of npm modules
+
+[Redux Typescript Docs](https://redux.js.org/recipes/usage-with-typescript): Hints on using TS with Redux
+
+[Typesafe Actions](https://github.com/piotrwitek/typesafe-actions): Library for easily creating action-creators for redux

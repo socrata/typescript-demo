@@ -72,6 +72,7 @@ class LameForm extends React.Component<
   render() {
     return (
       <div>
+        <h2>Lame Form</h2>
         <section>{this.state.greeting}</section>
         <form onSubmit={this.handleFormSubmit}>
           <label>

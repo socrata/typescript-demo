@@ -25,7 +25,8 @@
     "react-dom": "15.6.1",
     "react-redux": "5.0.6",
     "redux": "3.7.2",
-    "regenerator-runtime": "^0.13.3"
+    "regenerator-runtime": "^0.13.3",
+    "typesafe-actions": "^4.4.2"
   },
   "devDependencies": {
     "@babel/core": "7.5.5",
