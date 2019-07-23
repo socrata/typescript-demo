@@ -33,7 +33,7 @@ declare global {
 const composeEnhancers =
   (window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ &&
     window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
-      name: "Javascript Redux Store"
+      name: "Typescript Redux Store"
     })) ||
   compose;
 
