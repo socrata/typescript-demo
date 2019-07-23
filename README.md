@@ -43,16 +43,20 @@ Things to note:
 ## Exercises
 
 ### Easy Difficulty: The Bug and the Compiler
+
 In `lib/helpers.ts`, identify the bug in the `actionProgram` function, then reafactor `doAction` using types to ensure the compiler catches the bug.
 
 ### Medium Difficulty: Typing API Responses
+
 In `lib/http.ts`, create a Profile type and an async function that calls the profiles index route (/api/profiles). Add the function to the componentDidMount method of the ProfileTable component (use LameForm component as a model if you need some help).
 
 ### Medium Difficulty: "Folding" a hand
 
 Implement a button next to the `Hand` component that will "fold" a hand. This will put all of the cards in the hand into the discard pile and remove the hand from play.
 
-### Hints
+#### Hints
+
+Check out the `group-ex-folded-hand` branch for a completed version of the exercise.
 
 <details>
 <summary>Click for a hint!</summary>
