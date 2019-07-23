@@ -36,6 +36,12 @@ Things to note:
 
 ## Resources
 
+---
+
+[Typescript Lessons Learned Repo](https://github.com/socrata/typescript-lessons-learned/): Socrata repo of documents capturing what we have learned about TypeScript on our journey
+
+---
+
 [Typescript in 5 Minutes](https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes.html): Quick guide to TS
 
 [Typescript Handbook](https://www.typescriptlang.org/docs/handbook/basic-types.html): In-depth docs about everything
