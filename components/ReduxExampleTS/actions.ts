@@ -24,8 +24,13 @@ export const RESHUFFLE_DISCARD = "RESHUFFLE_DISCARD";
 export const reshuffleDiscardPile = () => action(RESHUFFLE_DISCARD);
 export type ReshuffleDiscardAction = ReturnType<typeof reshuffleDiscardPile>;
 
+export const FOLD_HAND = "FOLD_HAND";
+export const foldHand = (index: number) => action(FOLD_HAND, { index });
+export type FoldHandAction = ReturnType<typeof foldHand>;
+
 /** List of all action types */
 export type ActionTypes =
   | DealHandAction
   | PlayCardAction
-  | ReshuffleDiscardAction;
+  | ReshuffleDiscardAction
+  | FoldHandAction;

@@ -1,7 +1,13 @@
 import React, { Component } from "react";
 import { connect, Dispatch } from "react-redux";
 
-import { playCard, PlayCardAction, ActionTypes } from "../actions";
+import {
+  playCard,
+  PlayCardAction,
+  ActionTypes,
+  FoldHandAction,
+  foldHand
+} from "../actions";
 import { getHand } from "../selectors";
 import { Card, Suit, State } from "../types";
 
@@ -10,12 +16,15 @@ interface OwnProps {
   index: number;
 }
 
+/** Props from mapStateToProps */
 interface StateProps {
   hand: Card[];
 }
 
+/** Props from mapDispatchToProps */
 interface DispatchProps {
   onPlayCard: (index: number, cardIndex: number) => PlayCardAction;
+  onFoldHand: (index: number) => FoldHandAction;
 }
 
 type Props = OwnProps & StateProps & DispatchProps;
@@ -38,7 +47,7 @@ class Hand extends Component<Props> {
   };
 
   render() {
-    const { hand, index, onPlayCard } = this.props;
+    const { hand, index, onPlayCard, onFoldHand } = this.props;
 
     return (
       <div>
@@ -51,6 +60,7 @@ class Hand extends Component<Props> {
             {card.rank} {this.renderSuit(card.suit)}
           </button>
         ))}
+        <button onClick={() => onFoldHand(index)}>Fold</button>
       </div>
     );
   }
@@ -64,7 +74,8 @@ const mapDispatchToProps = (
   dispatch: Dispatch<ActionTypes>
 ): DispatchProps => ({
   onPlayCard: (index: number, cardIndex: number) =>
-    dispatch(playCard(index, cardIndex))
+    dispatch(playCard(index, cardIndex)),
+  onFoldHand: (index: number) => dispatch(foldHand(index))
 });
 
 export default connect<StateProps, DispatchProps>(

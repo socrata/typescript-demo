@@ -3,7 +3,9 @@ import {
   PLAY_CARD,
   RESHUFFLE_DISCARD,
   ActionTypes,
-  PlayCardAction
+  PlayCardAction,
+  FoldHandAction,
+  FOLD_HAND
 } from "./actions";
 import { generateDeck, shuffleDeck, getRandomName } from "./util";
 
@@ -14,6 +16,22 @@ const defaultState: State = {
   deck: generateDeck(),
   discardPile: [],
   hands: []
+};
+
+/** Fold a hand */
+const foldHand = (
+  state: State,
+  { payload: { index } }: FoldHandAction
+): State => {
+  const deletedHand = [...state.hands[index]];
+  const hands = [...state.hands];
+  hands.splice(index, 1);
+
+  return {
+    ...state,
+    hands,
+    discardPile: [...state.discardPile, ...deletedHand]
+  };
 };
 
 /** Dealing a hand to a new player */
@@ -96,6 +114,8 @@ export default (state = defaultState, action: ActionTypes) => {
       return playCard(state, action as PlayCardAction);
     case RESHUFFLE_DISCARD:
       return reshuffleDiscardPile(state);
+    case FOLD_HAND:
+      return foldHand(state, action as FoldHandAction);
     default:
       return state;
   }
